@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import java.lang.*;
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -51,22 +52,33 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+       private int randomWithRange(int min, int max)
+        {
+            int range = (max - min) + 1;
+            return (int)(Math.random() * range) + min;
+        }
+
+
     private void onKeyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
+                map.getSkeleton().move(randomWithRange(-1,1),randomWithRange(-1,1));
                 refresh();
                 break;
             case DOWN:
                 map.getPlayer().move(0, 1);
+                map.getSkeleton().move(randomWithRange(-1,1),randomWithRange(-1,1));
                 refresh();
                 break;
             case LEFT:
                 map.getPlayer().move(-1, 0);
+                map.getSkeleton().move(randomWithRange(-1,1),randomWithRange(-1,1));
                 refresh();
                 break;
             case RIGHT:
                 map.getPlayer().move(1,0);
+                map.getSkeleton().move(randomWithRange(-1,1),randomWithRange(-1,1));
                 refresh();
                 break;
         }
