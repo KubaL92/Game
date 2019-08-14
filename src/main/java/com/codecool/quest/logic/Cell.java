@@ -3,7 +3,7 @@ package com.codecool.quest.logic;
 import com.codecool.quest.logic.actors.Actor;
 
 public class Cell implements Drawable {
-    private CellType type;
+    public CellType type;
     private Actor actor;
     private GameMap gameMap;
     private int x, y;

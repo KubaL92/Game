@@ -22,6 +22,7 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
+    Label inventory = new Label();
 
     public static void main(String[] args) {
         launch(args);
@@ -85,5 +86,8 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+//        if(hasSword()){
+//            inventory.setText("" + map.getPlayer().);
+//        }
     }
 }
