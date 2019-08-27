@@ -3,17 +3,23 @@ package com.codecool.quest;
 import com.codecool.quest.logic.Cell;
 import com.codecool.quest.logic.GameMap;
 import com.codecool.quest.logic.MapLoader;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.w3c.dom.ls.LSOutput;
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -22,7 +28,8 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
-    Label inventory = new Label();
+    Label inventoryLabel = new Label();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -34,8 +41,24 @@ public class Main extends Application {
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
+        Button pickUp = new Button("Pick Up");
+
+
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
+        ui.add(new Label(""), 0, 1);
+        ui.add(new Label("-------------------"), 1, 2);
+        ui.add(inventoryLabel, 0, 3);
+        ui.add(pickUp, 1, 20);
+
+//        pickUp.setOnAction(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//
+//            }
+//        });
+
+
 
         BorderPane borderPane = new BorderPane();
 
@@ -86,8 +109,5 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
-//        if(hasSword()){
-//            inventory.setText("" + map.getPlayer().);
-//        }
     }
 }
